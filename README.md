@@ -76,6 +76,12 @@ Todas las imágenes pueden servirse directamente desde la CDN global de jsDelivr
 - Intentar mantener el mismo tamaño de imagen para todas las colecciones
 - Generar thumbnails para cada imagen  
 
+## 🖼️ Tamaño de las imágenes
+
+- Tamaño original: 750x1050 px
+- Tamaño de colecciones Pokémon: 660x920 px
+- Tamaño de thumbnails: 190x265 px (aproximados para una optimización de carga en el grid)
+
 ---
 
 ## 🔗 Proyecto principal
