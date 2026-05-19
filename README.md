@@ -47,6 +47,7 @@ Si te gusta el proyecto, tu apoyo ayuda a que siga creciendo, a que lleguen nuev
 
 Las imágenes están organizadas por colecciones:
 
+```
 crominus-images/
 ├── coleccion-001/
 │     ├── cromo_001.webp
@@ -57,6 +58,7 @@ crominus-images/
 │     ├── cromo_002.webp
 │     └── ...
 └── README.md
+```
 
 Cada carpeta representa una colección independiente.
 
