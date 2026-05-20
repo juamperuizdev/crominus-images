@@ -84,6 +84,11 @@ Todas las imágenes pueden servirse directamente desde la CDN global de jsDelivr
 - Tamaño de colecciones Pokémon: 660x920 px
 - Tamaño de thumbnails: 190x265 px (aproximados para una optimización de carga en el grid)
 
+## 📎 Enlace de las imágenes
+
+- Imagen principal: https://cdn.jsdelivr.net/gh/juamperuizdev/crominus-images/collections/<collection-name>/<card-name>.webp
+- Imagen thumb: https://cdn.jsdelivr.net/gh/juamperuizdev/crominus-images/collections/<collection-name>/thumbs/<card-name>.webp
+
 ---
 
 ## 🔗 Proyecto principal
