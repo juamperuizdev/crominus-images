@@ -2,7 +2,7 @@
 
 Repositorio público que contiene los recursos gráficos utilizados en **CROMINUS**, el juego online de cromos y trading cards desarrollado por [Juampe Ruiz](https://www.juamperuiz.es).
 
-Este repositorio sirve como **origen estático** para las imágenes de las colecciones, distribuidas globalmente mediante **jsDelivr CDN** para garantizar máxima velocidad, disponibilidad y una experiencia fluida para los jugadores.
+Este repositorio sirve como **origen estático** para las imágenes de las colecciones, distribuidas mediante **GitHub Pages** en el dominio **https://images.crominus.es/** para garantizar velocidad, disponibilidad y una experiencia fluida para los jugadores.
 
 ---
 
@@ -50,44 +50,56 @@ Las imágenes están organizadas por colecciones:
 ```
 crominus-images/
 ├── coleccion-001/
-│     ├── cromo_001.webp
-│     ├── cromo_002.webp
-│     └── ...
+│     ├── referencia-001.webp
+│     ├── referencia-002.webp
+│     └── thumbs/
+│           ├── referencia-001.webp
+│           ├── referencia-002.webp
+│           └── ...
 ├── coleccion-002/
-│     ├── cromo_001.webp
-│     ├── cromo_002.webp
-│     └── ...
+│     ├── referencia-001.webp
+│     └── thumbs/
+│           ├── referencia-001.webp
+│           └── ...
 └── README.md
 ```
 
-Cada carpeta representa una colección independiente.
+Cada carpeta representa una colección independiente. Los archivos siguen el formato `referencia-NNN.webp` donde `referencia` es el código interno de la colección y `NNN` es el número del cromo con padding de 3 dígitos.
 
 ---
 
-## ⚡ Acceso vía CDN (jsDelivr)
+## ⚡ Acceso vía GitHub Pages
 
-Todas las imágenes pueden servirse directamente desde la CDN global de jsDelivr.
+Todas las imágenes se sirven directamente desde **https://images.crominus.es/** configurado mediante GitHub Pages con dominio personalizado.
+
+### URLs de acceso
+
+- **Imagen principal:** `https://images.crominus.es/collections/<collection-name>/<reference-NNN>.webp`
+- **Thumbnail:** `https://images.crominus.es/collections/<collection-name>/thumbs/<reference-NNN>.webp`
+
+### Ejemplo real
+
+```
+https://images.crominus.es/collections/pokemon-megaevolucion/cr-pk-mev-001.webp
+https://images.crominus.es/collections/pokemon-megaevolucion/thumbs/cr-pk-mev-001.webp
+```
 
 ## 🛠 Buenas prácticas para nuevas colecciones
 
 - Utilizar formato **WebP** siempre que sea posible  
-- Mantener nombres consistentes (`cromo_001.webp`, `cromo_002.webp`, etc.)  
+- Mantener nombres consistentes (`referencia-NNN.webp` con padding de 3 dígitos)  
 - Evitar espacios y caracteres especiales  
 - Subir imágenes optimizadas  
 - Mantener una carpeta por colección
 - Intentar mantener el mismo tamaño de imagen para todas las colecciones
-- Generar thumbnails para cada imagen  
+- Generar thumbnails para cada imagen en subcarpeta `thumbs/`
 
 ## 🖼️ Tamaño de las imágenes
 
-- Tamaño original: 750x1050 px
-- Tamaño de colecciones Pokémon: 660x920 px
-- Tamaño de thumbnails: 190x265 px (aproximados para una optimización de carga en el grid)
-
-## 📎 Enlace de las imágenes
-
-- Imagen principal: https://cdn.jsdelivr.net/gh/juamperuizdev/crominus-images/collections/<collection-name>/<card-name>.webp
-- Imagen thumb: https://cdn.jsdelivr.net/gh/juamperuizdev/crominus-images/collections/<collection-name>/thumbs/<card-name>.webp
+- Tamaño original estándar: 750x1050 px
+- Tamaño colecciones Pokémon: 660x920 px
+- Thumbnails: altura máxima 265px, ancho proporcional (aprox. 190px)
+- Todas las imágenes mantienen su proporción original
 
 ---
 
