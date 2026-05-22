@@ -80,8 +80,8 @@ Todas las imágenes se sirven directamente desde **https://images.crominus.es/**
 ### Ejemplo real
 
 ```
-https://images.crominus.es/collections/pokemon-megaevolucion/cr-pk-mev-001.webp
-https://images.crominus.es/collections/pokemon-megaevolucion/thumbs/cr-pk-mev-001.webp
+https://images.crominus.es/collections/pokemon-megaevolucion/cro-pk-mev-001.webp
+https://images.crominus.es/collections/pokemon-megaevolucion/thumbs/cro-pk-mev-001.webp
 ```
 
 ## 🛠 Buenas prácticas para nuevas colecciones
