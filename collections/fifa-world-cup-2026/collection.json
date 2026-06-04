@@ -1,14 +1,14 @@
 {
     "id_category": 6,
-    "status": 0,
+    "status": 1,
     "date_start": "",
     "date_end": "",
     "price": 100,
     "reference": "CRO-FWC26",
-    "name": "Panini FIFA World Cup 2026",
+    "name": "FIFA World Cup 2026",
     "size": "690x920",
-    "description": "<h3>Panini FIFA World Cup 2026</h3><p>Colección oficial del Mundial 2026 con todos los equipos clasificados.</p>",
-    "rarity": {
+    "description": "<h3>FIFA World Cup 2026</h3><p>Descubre la Colección Oficial de Cromos de la Copa Mundial de la FIFA 2026, el álbum de cromos Panini dedicado a la Copa Mundial de la FIFA 2026: el primer torneo con 48 selecciones, celebrado en Norteamérica. Un viaje a través de las estrellas del fútbol y los talentos emergentes en una de las colecciones más completas jamás creadas con un total de 610 cromos, incluyendo 27 cromos especiales de rareza épica con las legendas del mundial.</p>",
+    "cards": {
         "cro-fwc26-00-spe-00": "special",
         "cro-fwc26-00-spe-01": "special",
         "cro-fwc26-00-spe-02": "special",
