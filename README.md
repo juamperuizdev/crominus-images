@@ -98,8 +98,24 @@ https://images.crominus.es/collections/pokemon-megaevolucion/thumbs/cro-pk-mev-0
 
 - Tamaño original estándar: 750x1050 px
 - Tamaño colecciones Pokémon: 660x920 px
+- Tamaño colecciones Panini FIFA World Cup: 690x920 px
 - Thumbnails: altura máxima 265px, ancho proporcional (aprox. 190px)
 - Todas las imágenes mantienen su proporción original
+
+---
+
+## 🏷️ Categorías de colecciones
+
+Cada colección pertenece a una categoría. Estas son las categorías disponibles:
+
+| ID | Categoría   |
+|----|-------------|
+| 1  | General     |
+| 2  | Cine        |
+| 3  | Música      |
+| 4  | Historia    |
+| 5  | Videojuegos |
+| 6  | Deportes    |
 
 ---
 
