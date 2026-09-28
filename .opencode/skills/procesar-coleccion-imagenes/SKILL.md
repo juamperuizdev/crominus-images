@@ -25,7 +25,7 @@ Preguntar siempre (no asumir):
 
 | Dato | Ejemplo | Obligatorio |
 |---|---|---|
-| Código referencia | `cro-pk-mcc` | sí |
+| Código referencia | `cro-pk-c30` | sí (siempre en minúsculas) |
 | Dimensiones originales | 660x920 | sí (auto-detectar y confirmar) |
 | Padding números | 3 dígitos (001) | sí (confirmar) |
 
@@ -44,10 +44,11 @@ Preguntar al usuario:
    - Extraer número del nombre original (adaptar regex al patrón)
    - Convertir PNG → WebP (calidad confirmada)
    - Generar thumbnail (altura confirmada, ancho proporcional)
-   - Guardar como `{ref}-{NNN}.webp` con padding confirmado
+   - Guardar como `{ref}-{NNN}.webp` con padding confirmado, **en minúsculas**
    - Eliminar PNG original tras conversión exitosa
 3. Verificar que no quedan PNG
-4. Eliminar script temporal
+4. Verificar que ningún nombre de archivo contiene mayúsculas
+5. Eliminar script temporal
 
 ## Estructura resultante
 
@@ -60,6 +61,35 @@ collections/{carpeta}/
     ├── {ref}-002.webp
 ```
 
+## Reglas de naming de archivos
+
+**Todos los nombres de archivo, tanto las imágenes principales como los thumbnails, van SIEMPRE en minúsculas.**
+
+- ✅ `cro-pk-c30-001.webp` y `thumbs/cro-pk-c30-001.webp`
+- ❌ `CRO-PK-C30-001.webp` y `thumbs/CRO-PK-C30-001.webp`
+
+Motivos:
+- Es la convención que ya usan todas las colecciones del repo (`cro-pk-mev-001.webp`, `cro-fwc26-00-spe-00`, etc.).
+- Las claves del campo `cards` de `collection.json` son el nombre de archivo sin extensión, en minúsculas. Si el archivo va en mayúsculas, la clave no coincide y el importador no encuentra la imagen.
+
+El campo `reference` de `collection.json` sí va en MAYÚSCULAS (`CRO-PK-C30`); son cosas distintas. No confundirlos.
+
+En el script, normalizar siempre antes de escribir:
+
+```php
+$file = strtolower($ref) . '-' . str_pad($num, $padding, '0', STR_PAD_LEFT);
+```
+
+Si se descubre que ya se generaron archivos con mayúsculas, renombrarlos en dos pasos (Windows no permite cambiar solo mayúsculas en un `rename` directo):
+
+```powershell
+foreach ($f in $files) {
+    $tmp = Join-Path $f.DirectoryName ('tmp-' + $f.Name.ToLower())
+    Rename-Item -LiteralPath $f.FullName -NewName $tmp -Force
+    Rename-Item -LiteralPath $tmp -NewName $f.Name.ToLower() -Force
+}
+```
+
 ## Script de referencia
 
 El agente debe generar un script PHP dinámico usando los datos recopilados.
@@ -68,7 +98,7 @@ Estructura mínima:
 ```php
 <?php
 // Estos valores se obtienen del usuario en cada ejecución
-$ref        = 'CRO-REF';            // preguntado al usuario
+$ref        = 'cro-ref';            // preguntado al usuario, en minúsculas
 $collection = 'carpeta-coleccion';   // detectada o preguntada
 $maxHeight  = 265;                   // preguntado o default
 $quality    = 85;                    // preguntado o default
@@ -88,7 +118,8 @@ foreach ($files as $path) {
     if (!isset($m[1])) continue;
 
     $num  = (int) $m[1];
-    $file = $ref . '-' . str_pad($num, $padding, '0', STR_PAD_LEFT);
+    // strtolower garantiza minúsculas en el nombre de salida
+    $file = strtolower($ref) . '-' . str_pad($num, $padding, '0', STR_PAD_LEFT);
 
     $src = imagecreatefrompng($path);
     if (!$src) continue;
@@ -115,6 +146,7 @@ echo "COMPLETADO";
 
 ## Notas
 
+- **Los nombres de archivo van siempre en minúsculas**, incluidos los thumbnails. Ver "Reglas de naming de archivos".
 - Adaptar la regex según el patrón de nombre de los PNG originales
 - Si las imágenes son JPG, usar `imagecreatefromjpeg()` en lugar de `imagecreatefrompng()`
 - Eliminar siempre el script temporal al finalizar

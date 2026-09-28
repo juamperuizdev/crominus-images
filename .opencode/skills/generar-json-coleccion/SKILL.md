@@ -24,7 +24,7 @@ Estructura y reglas para generar el archivo `collection.json` de una colección 
     "name": "Nombre de la Colección",
     "size": "anchoxalto",
     "description": "<p>HTML description</p>",
-    "rarity": {
+    "cards": {
         "cro-fwc26-00-spe-00": "special",
         "cro-fwc26-01-mex-00": "rare"
     }
@@ -44,7 +44,7 @@ Estructura y reglas para generar el archivo `collection.json` de una colección 
 | `name` | string | si | Nombre visible de la colección |
 | `size` | string | si | "anchoxalto" (ej: "660x920", "690x920") |
 | `description` | string | si | HTML con la descripción |
-| `rarity` | object | si | Clave = reference del cromo (nombre de archivo sin extensión), Valor = tipo de rareza |
+| `cards` | object | si | Clave = nombre del archivo de imagen sin extensión, en minúsculas. Valor = tipo de rareza |
 
 ## Categorías disponibles
 
@@ -68,11 +68,15 @@ Estructura y reglas para generar el archivo `collection.json` de una colección 
 
 ## Reglas de naming
 
-- `reference` debe coincidir con el prefijo de los archivos de imagen.
-  - Si las imágenes son `CRO-FWC26-001.webp`, la reference es `CRO-FWC26`.
-  - Siempre en MAYÚSCULAS.
-  - Separador: guiones (`-`).
-- Los archivos de imagen tienen formato `{reference}-{NNN}.webp` con padding de 3 dígitos.
+- `reference` va en **MAYÚSCULAS**, separador guiones (`-`).
+  - Si las imágenes son `cro-fwc26-001.webp`, la reference es `CRO-FWC26`.
+- Los **archivos de imagen** van en **minúsculas**, formato `{reference-lowercase}-{NNN}.webp` con padding de 3 dígitos.
+  - ✅ `CRO-FWC26` (reference) → `cro-fwc26-001.webp` (archivo)
+  - La `reference` es el mismo prefijo pero en mayúsculas. No son idénticas.
+- Las claves del objeto de rarezas son el **nombre de archivo sin extensión, en minúsculas**.
+  - ✅ `"cro-fwc26-00-spe-00": "special"`
+  - ❌ `"CRO-FWC26-00-SPE-00": "special"` (no coincide con ningún archivo y rompe la importación)
+- El campo que contiene las rarezas se llama **`cards`**, no `rarity`. Verificar el esquema contra un `collection.json` existente antes de generar.
 
 ## Tamaños de colecciones conocidas
 
